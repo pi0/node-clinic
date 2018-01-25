@@ -59,9 +59,16 @@ workflows:
       - lint:
           requires:
             - build
-      - test:
+      - test-9.4:
           requires:
             - build
+          docker:
+            - image: circleci/node:9.4
+      - test-8:
+          requires:
+            - build
+          docker:
+            - image: circleci/node:8
       - coverage:
           requires:
             - lint
